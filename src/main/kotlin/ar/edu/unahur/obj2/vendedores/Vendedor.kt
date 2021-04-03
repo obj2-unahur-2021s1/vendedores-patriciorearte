@@ -18,7 +18,15 @@ abstract class Vendedor {
   // Como no vamos a implementarlo acá, es necesario explicitar qué devuelve.
   abstract fun puedeTrabajarEn(ciudad: Ciudad): Boolean
 
+  //se considera genérico si tiene al menos una certificación que no es de productos.
+  //Devuelve un booleano
+  fun esVendedorGenerico(): Boolean
+  {
+    return  certificaciones.any{c->!c.esDeProducto}
+  }
+
   // En las funciones declaradas con = no es necesario explicitar el tipo
+
   fun esVersatil() =
     certificaciones.size >= 3
       && this.certificacionesDeProducto() >= 1
@@ -48,7 +56,7 @@ class VendedorFijo(val ciudadOrigen: Ciudad) : Vendedor()
   }
   //Devuelve un booleano
   override fun esVendedorInfluyente(): Boolean {
-    return False
+    return false
   }
 }
 
