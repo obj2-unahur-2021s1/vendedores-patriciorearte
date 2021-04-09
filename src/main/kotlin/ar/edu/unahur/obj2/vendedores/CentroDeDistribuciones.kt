@@ -9,7 +9,7 @@ class CentroDeDistribuciones(val provincia: Provincia)
     {
         if(vendedores.contains(vendedor))
         {
-            this.error("Ya lo tiene")
+            throw Exception("Ya esta en la lista")
         }
         else {
             vendedores.add(vendedor)
@@ -19,7 +19,7 @@ class CentroDeDistribuciones(val provincia: Provincia)
     //Devuelve un vendedor
     fun esVendedorEstrella(): Vendedor
     {
-        return vendedores.max{c-> c.puntajeCertificaciones}
+        return vendedores.maxBy{c-> c.puntajeCertificaciones()}
     }
     //Devuelve un Booleano
     fun puedeCubrir(ciudad: Ciudad): Boolean {
